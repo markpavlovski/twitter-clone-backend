@@ -8,9 +8,17 @@ const db = new DB(file,'messages')
 
 
 class Message {
-  constructor({messageBody}){
+  constructor({messageBody, name, handle}){
     this.messageBody = messageBody
+    this.name = name
+    this.handle = handle
+    this.timestamp = new Date
     this.id = shortid()
+    this.tags = this.getTags(messageBody)
+  }
+
+  getTags(messageBody){
+    return messageBody.split(' ').filter(el => el[0] === '#')
   }
 }
 
@@ -18,7 +26,7 @@ let getAll = () => db.get('messages')
 let show = (id) => db.get('messages').find(el => el.id === id)
 
 
-let create = ({messageBody = ""}) => {
+let create = ({messageBody, name, handle}) => {
 
   let response = null
   let errors = []
@@ -26,9 +34,15 @@ let create = ({messageBody = ""}) => {
   if (!messageBody) {
     errors.push('messageBody is required')
     response = { errors }
+  } else if (!name) {
+    errors.push('name is required')
+    response = { errors }
+  } else if (!handle) {
+    errors.push('handle is required')
+    response = { errors }
   } else {
     const messages = db.get('messages')
-    const message = new Message({messageBody})
+    const message = new Message({messageBody, name, handle})
     messages.push(message)
     db.set('messages', messages)
     response = message

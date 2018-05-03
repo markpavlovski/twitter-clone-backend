@@ -1,1 +1,17 @@
-{"messages":[{"messageBody":"oi","id":"ryDCmktTM"},{"messageBody":"oi","id":"Sy60QJFTf"},{"messageBody":"hiiii","id":"BJdFNyYTM"}]}
+{
+  "messages": [{
+    "messageBody": "asdasd",
+    "name": "asd",
+    "handle": "asdfdsf",
+    "timestamp": "2018-05-03T19:50:47.692Z",
+    "id": "BylQdytpf",
+    "tags": []
+  }, {
+    "messageBody": "Well #hello #world there",
+    "name": "asd",
+    "handle": "asdfdsf",
+    "timestamp": "2018-05-03T19:51:08.914Z",
+    "id": "BkrNuyK6M",
+    "tags": ["#hello", "#world"]
+  }]
+}
