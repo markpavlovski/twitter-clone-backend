@@ -1,11 +1,13 @@
 const model = require('../models/message')
 
 function getAll (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*")
   const data = model.getAll()
   res.status(200).json({ data })
 }
 
 function create (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*")
   const result = model.create(req.body)
 
   if (result.errors) {
@@ -16,6 +18,7 @@ function create (req, res, next) {
 }
 
 function show (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*")
   const id = req.params.id
   const data = model.show(id)
 
@@ -24,6 +27,7 @@ function show (req, res, next) {
 }
 
 function modify (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*")
   const id = req.params.id
   const data = model.modify(id, req.body)
 
@@ -31,6 +35,7 @@ function modify (req, res, next) {
 }
 
 function remove (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*")
   const id = req.params.id
   const data = model.remove(id)
   res.status(200).json({ data })
