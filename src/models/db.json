@@ -1,17 +1,1 @@
-{
-  "messages": [{
-    "messageBody": "asdasd",
-    "name": "asd",
-    "handle": "asdfdsf",
-    "timestamp": "2018-05-03T19:50:47.692Z",
-    "id": "BylQdytpf",
-    "tags": []
-  }, {
-    "messageBody": "Well #hello #world there",
-    "name": "asd",
-    "handle": "asdfdsf",
-    "timestamp": "2018-05-03T19:51:08.914Z",
-    "id": "BkrNuyK6M",
-    "tags": ["#hello", "#world"]
-  }]
-}
+{"messages":[{"messageBody":"asdasd","name":"asd","handle":"asdfdsf","timestamp":"2018-05-03T19:50:47.692Z","id":"BylQdytpf","tags":[]},{"messageBody":"Well #hello #world there","name":"asd","handle":"asdfdsf","timestamp":"2018-05-03T19:51:08.914Z","id":"BkrNuyK6M","tags":["#hello","#world"]},{"messageBody":"Testing testing one #two three","name":"Mark Pavlovski","handle":"@mrkpvlvski","timestamp":"2018-05-03T20:11:20.975Z","id":"Bk-xakFTf","tags":["#two"]}]}
