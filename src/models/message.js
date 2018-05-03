@@ -3,20 +3,20 @@ const fs = require('fs')
 const path=require('path')
 const file = path.join(__dirname, 'db.json')
 const DB = require('./db')
-const db = new DB(file,'authors')
+const db = new DB(file,'messages')
 
 
 
-class Author {
-  constructor({firstName,lastName,authors}){
+class Message {
+  constructor({firstName,lastName,messages}){
     this.firstName = firstName
     this.lastName = lastName
     this.id = shortid()
   }
 }
 
-let getAll = () => db.get('authors')
-let show = (id) => db.get('authors').find(el => el.id === id)
+let getAll = () => db.get('messages')
+let show = (id) => db.get('messages').find(el => el.id === id)
 
 
 let create = ({firstName = "", lastName = ""}) => {
@@ -31,11 +31,11 @@ let create = ({firstName = "", lastName = ""}) => {
     errors.push('lastName is required')
     response = { errors }
   } else {
-    const authors = db.get('authors')
-    const author = new Author({firstName, lastName})
-    authors.push(author)
-    db.set('authors', authors)
-    response = author
+    const messages = db.get('messages')
+    const message = new Message({firstName, lastName})
+    messages.push(message)
+    db.set('messages', messages)
+    response = message
   }
 
   return response
@@ -43,28 +43,28 @@ let create = ({firstName = "", lastName = ""}) => {
 
 let modify = (id, {firstName ="", lastName=""}) => {
 
-  const authors = db.get('authors')
+  const messages = db.get('messages')
 
-    const author = authors.find(el => el.id === id)
+    const message = messages.find(el => el.id === id)
 
-    if (firstName) author.firstName = firstName
-    if (lastName) author.lastName = lastName
+    if (firstName) message.firstName = firstName
+    if (lastName) message.lastName = lastName
 
-  db.set('authors', authors)
+  db.set('messages', messages)
 
-  return author
+  return message
 }
 
 
 let remove = (id) => {
 
-  const authors = db.get('authors')
+  const messages = db.get('messages')
 
-    const author = authors.find(el => el.id === id)
-    let index = authors.findIndex(el => el.id === id)
-    const removed = authors.splice(index, 1)
+    const message = messages.find(el => el.id === id)
+    let index = messages.findIndex(el => el.id === id)
+    const removed = messages.splice(index, 1)
 
-  db.set('authors', authors)
+  db.set('messages', messages)
   return removed
 }
 

@@ -1,4 +1,4 @@
-const model = require('../models/author')
+const model = require('../models/message')
 
 function getAll (req, res, next) {
   const data = model.getAll()
@@ -10,7 +10,7 @@ function create (req, res, next) {
   const result = model.create(req.body)
 
   if (result.errors) {
-    return next({ status: 400, message: `Could not create new author`, errors: result.errors })
+    return next({ status: 400, message: `Could not create new message`, errors: result.errors })
   }
 
   res.status(201).json({ data: result })
