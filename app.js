@@ -8,11 +8,9 @@ app.disable('x-powered-by')
 app.use(bodyParser.json())
 if (process.env.NODE_ENV === 'development') app.use(morgan('dev'))
 
-const booksRoutes = require('./src/routes/books')
-const authorsRoutes = require('./src/routes/authors')
+const messagesRoutes = require('./src/routes/messages')
 
-app.use('/books', booksRoutes)
-app.use('/authors', authorsRoutes)
+app.use('/messages', messagesRoutes)
 
 
 
