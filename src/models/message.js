@@ -8,9 +8,8 @@ const db = new DB(file,'messages')
 
 
 class Message {
-  constructor({firstName,lastName,messages}){
-    this.firstName = firstName
-    this.lastName = lastName
+  constructor({messageBody}){
+    this.messageBody = messageBody
     this.id = shortid()
   }
 }
@@ -19,20 +18,17 @@ let getAll = () => db.get('messages')
 let show = (id) => db.get('messages').find(el => el.id === id)
 
 
-let create = ({firstName = "", lastName = ""}) => {
+let create = ({messageBody = ""}) => {
 
   let response = null
   let errors = []
 
-  if (!firstName) {
-    errors.push('firstName is required')
-    response = { errors }
-  } else if (!lastName){
-    errors.push('lastName is required')
+  if (!messageBody) {
+    errors.push('messageBody is required')
     response = { errors }
   } else {
     const messages = db.get('messages')
-    const message = new Message({firstName, lastName})
+    const message = new Message({messageBody})
     messages.push(message)
     db.set('messages', messages)
     response = message
@@ -41,14 +37,12 @@ let create = ({firstName = "", lastName = ""}) => {
   return response
 }
 
-let modify = (id, {firstName ="", lastName=""}) => {
+let modify = (id, {messageBody =""}) => {
 
   const messages = db.get('messages')
 
     const message = messages.find(el => el.id === id)
-
-    if (firstName) message.firstName = firstName
-    if (lastName) message.lastName = lastName
+    if (messageBody) message.messageBody = messageBody
 
   db.set('messages', messages)
 

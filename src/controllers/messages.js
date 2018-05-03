@@ -6,7 +6,6 @@ function getAll (req, res, next) {
 }
 
 function create (req, res, next) {
-  console.log("ASDASDASD");
   const result = model.create(req.body)
 
   if (result.errors) {
